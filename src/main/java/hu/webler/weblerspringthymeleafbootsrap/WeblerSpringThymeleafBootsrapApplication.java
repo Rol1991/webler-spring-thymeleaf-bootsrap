@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WeblerSpringThymeleafBootsrapApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(WeblerSpringThymeleafBootsrapApplication.class, args);
 	}
 
