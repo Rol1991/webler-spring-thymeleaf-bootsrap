@@ -1,11 +1,9 @@
 package hu.webler.weblerspringthymeleafbootsrap.bootsrap;
 
-
 import hu.webler.weblerspringthymeleafbootsrap.model.Employee;
-
+import hu.webler.weblerspringthymeleafbootsrap.view.model.Paged;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +21,15 @@ public class DataLoader {
         }
     }
 
-    public List<Employee> getEmployees() {
+    /*public List<Employee> getEmployees() {
         return this.employees;
+    }*/
+
+    public Paged<Employee> getEmployees(int page) {
+        int startIndex = page * 10;
+        int endIndex = Math.min(startIndex + 10, this.employees.size());
+        List<Employee> pagedEmployees = this.employees.subList(startIndex, endIndex);
+        int totalNumberOfPage = (int) Math.ceil((double) this.employees.size() / 10);
+        return new Paged<>(pagedEmployees, page, totalNumberOfPage);
     }
 }
